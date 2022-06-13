@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <style>
+        body {
+            background: black;
+            color: white;
+            margin: 0;
+            padding:0;  
+        }
+        header{
+            background: red;
+            background-size: 100%;
+            background-position: center;
+            height: 150px;
+            padding: 20px;
+            text-align: center;
+        }
+        header a{
+           
+            color: black;
+            font-size:xx-large ;
+            text-transform: uppercase;
+            text-decoration: none;
+            margin-top: 0px;
+            padding-bottom: 0;
+        }
+        header .logo1 {
+            background-image: url(https://p.kindpng.com/picc/s/189-1897133_movie-ticket-sticker-png-transparent-png.png);
+            background-repeat: no-repeat;
+            background-size: 150px;
+            background-position: left;
+            display: inline-block;
+            top: -20px;
+           
+            height: 160px;
+            width: 35%;   
+        }
+        header .logo2 {
+            background-image: url(https://png.pngtree.com/png-clipart/20210318/ourlarge/pngtree-cartoon-movie-popcorn-film-glasses-png-image_3083642.jpg);
+            background-repeat: no-repeat;
+            background-size: 150px;
+            background-position:right;
+            display: inline-block;
+            top: -20px;    
+            
+            height: 160px;
+            width: 35%;   
+        }
+       .datatable{
+                text-align: center;
+                width: 1000px;
+                margin: 0 auto;
+                border: dotted;
+                border-color: #73AD21;
+        }
+        .links{
+            color:Red;
+        }
+        h1{
+                text-align: center;
+                font-family: Stencil Std, fantasy, sans-serif;
+                font-size: 15px;
+                font-weight: 250;
+        }
+        nav ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav li{
+            margin:auto;
+            display: inline-block;
+        }
+        section {
+            background: black;
+            color: white;
+            padding: 0%;
+        }       
+        footer {
+            background: red;
+            background-size: 100%;
+            background-position: center;
+            height: 150px;
+            padding: 100px;
+            top:-80px;
+            text-align: center;
+        }
+
+    </style>
+   <header>
+        <nav>
+            <ul>
+                <li class= "logo1"><a></a></li>
+                <li> <a> Movie Showing</a></li>
+                <li class= "logo2"><a></a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>
+    <h:body>
+        <br/>
+        <h:form>
+            <div>
+                <h:outputText class="div1" value="Movies showing at #{theaterBean.theater.name} "/>
+            </div>
+            <br/>
+            <h:dataTable class="datatable" value="#{theaterBean.moviesList}" var="movie">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Title"/>
+                    </f:facet>
+                    <h:outputText value="#{movie.title}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Description"/>
+                    </f:facet>
+                    <h:outputText value="#{movie.description}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Available times"/>
+                    </f:facet>
+                    <h:dataTable value="#{theaterBean.getTimes(movie.title)}" var="time">
+                        <h:column>
+                            <h:commandLink class="links" value="#{time}" action="#{payBean.Payment(movie)}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:column>
+            </h:dataTable>
+            <br/>
+            <div>
+                <h:commandButton value="Back" action="ZipSelect.xhtml"/>
+            </div>
+        </h:form>
+    </h:body>
+    </h1>
+    <footer>
+        
+    </footer>
+</html>
+

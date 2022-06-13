@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <style>
+        body {
+            background: black;
+            color: white;
+            margin: 0;
+            padding:0;  
+        }
+        header{
+            background: red;
+            background-size: 100%;
+            background-position: center;
+            height: 150px;
+            padding: 20px;
+            text-align: center;
+        }
+        header a{
+           
+            color: black;
+            font-size:xx-large ;
+            text-transform: uppercase;
+            text-decoration: none;
+            margin-top: 0px;
+            padding-bottom: 0;
+        }
+        header .logo1 {
+            background-image: url(https://p.kindpng.com/picc/s/189-1897133_movie-ticket-sticker-png-transparent-png.png);
+            background-repeat: no-repeat;
+            background-size: 150px;
+            background-position: left;
+            display: inline-block;
+            top: -20px;
+           
+            height: 160px;
+            width: 35%;   
+        }
+        header .logo2 {
+            background-image: url(https://png.pngtree.com/png-clipart/20210318/ourlarge/pngtree-cartoon-movie-popcorn-film-glasses-png-image_3083642.jpg);
+            background-repeat: no-repeat;
+            background-size: 150px;
+            background-position:right;
+            display: inline-block;
+            top: -20px;    
+            
+            height: 160px;
+            width: 35%;   
+        }
+       .datatable{
+                text-align: center;
+                width: 550px;
+                margin: 0 auto;
+                border: dotted;
+                border-color: #73AD21;
+        }
+        .links{
+            color:Red;
+        }
+        h1{
+                text-align: center;
+                font-family: Stencil Std, fantasy, sans-serif;
+                font-size: 15px;
+                font-weight: 250;
+        }
+        nav ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav li{
+            margin:auto;
+            display: inline-block;
+        }
+        section {
+            background: black;
+            color: white;
+            padding: 0%;
+        }       
+        footer {
+            background: red;
+            color: white;
+            padding:10px 20px;
+    
+        }
+    </style>
+    <style type="text/css">
+        .column {
+          float:left;
+          width: 15%;
+          padding: 30px;
+        }
+        .row::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+        img {
+            float: center;
+            width:  300px;
+            height: 300px; 
+        }
+    </style>
+    <h:head>
+        <title>Show Zipcode</title>
+    </h:head>
+    <h:body>
+        <header>
+        <nav>
+            <ul>
+                <li class= "logo1"><a></a></li>
+                <li> <a> Enter Zipcode </a></li>
+                <li class= "logo2"><a></a></li>
+            </ul>
+        </nav>
+    </header>
+        <h1>
+            <h:form>
+                <div>
+                    <h:outputText value="Movies for #{zipBean.zipcode}"/>
+                </div><br/>
+                <div>
+                    <h:dataTable class="datatable" value="#{zipBean.theaterZip}" var="theater">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Select"/>
+                            </f:facet>
+                            <h:commandLink class="links" value="View" action="#{theaterBean.viewTheater(theater)}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name"/>
+                            </f:facet>
+                            <h:outputText value="#{zipBean.colllectName(theater.name)}"/>
+                        </h:column>
+                    </h:dataTable>
+                <br/>
+                </div>
+                <div>
+                    <h:commandButton value="Back" action="MainPage"/>
+                </div>
+            </h:form>
+        </h1>
+        <br/>
+        <br/>
+        <section>
+            <h1>Available Movies at <h:outputText value="#{zipBean.firsttname}"/>:</h1>
+            <div class="row">
+                <div class="column">
+                    <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/Movie_Poster_Art_-_Deadpool_-_Valentine_Love_-_Tallenge_Hollywood_Poster_Collection_a50c3af0-823b-4de2-945a-3542c33f0b77.jpg?v=1578045073" alt="Snow" style="width:100%"></img>
+                  </div>
+                <div class="column">
+                  <img src="https://ci6.googleusercontent.com/proxy/uVVVyGfLFCVVZROJvRoIMa8yo7ADn1z-wYilTjXQJFuQtDH54-VN3j5P1W6QesHphbbAOeP_pYi7zY2sZdVQHpxzWXhWqazx25MHxa5t8bOobeUsUHYomPsq2dNvC_0VsJ8VTxXJHsFyz-0wG7_uPHMp95h8lFrDpWjuBHcwVv79Eb4wT02PbCBt3ZkCqVKBUs3KU0v_4rN5BTb_3L3VURxLcP52WePLsnwpOste=s0-d-e1-ft#https://mlpnk72yciwc.i.optimole.com/cqhiHLc.WqA8~2eefa/w:600/h:888/q:75/https://bleedingcool.com/wp-content/uploads/2021/03/godzilla_vs_kong_ver12_xlg.jpg" alt="Snow" style="width:100%"/>
+                </div>
+                <div class="column">
+                  <img src="https://ci5.googleusercontent.com/proxy/Ug3sEDX4s9EK1Awm-FFxYYIqvvl6CNntyL0m-xjfCJmFL4j5UNbUwSN1nywF2FkhV2IPElbdq2_rDnI1ISnLGYqaH_gvKcTmGBqrOJ6PDVsXN4ww5AM0KbI=s0-d-e1-ft#https://popcornusa.s3.amazonaws.com/movies/650/5984-12972-CrazyRic.jpg" alt="Forest" style="width:100%"/>
+                </div>
+                <div class="column">
+                  <img src="https://ci4.googleusercontent.com/proxy/B-YoUdMcYgl7uzNtO0LJOYy1jo3XzrNE3cAYwhGbw0XvgV9L9-6CQHiLbilBM86kmEPkGhFlOsLSNeBjA4xnFtSpeeqwc2OoTpOipPwytb5P-z3AvWZzfcbwZytQ8n4HR00adPLl5hWs4_es57E_TgpnUS9WJBK0ck5CbqyjEq5lfvbO0b6kGZ_rT0zbNw=s0-d-e1-ft#https://cdn.shopify.com/s/files/1/0747/3829/products/HP3038_4be877cf-40be-4cd6-8973-3c5063475b14_1024x1024.jpg?v=1571445096" alt="Mountains" style="width:100%"/>
+                </div>
+                <div class="column">
+                  <img src="https://ci6.googleusercontent.com/proxy/pB-sqpVXrTbh3GcDVKQVtcB6j38Qrgg8IOtf8aPCKu75REFqm6p6PDvkkpKHzfv1ZDnmYPFx6DSuyloqN4v88OVQFtk_cqZJl8ZsnCqG8grMzOox9UVweSP35Lrkp6cl9e-MOZg=s0-d-e1-ft#https://www.joblo.com/assets/images/oldsite/posters/images/full/2004-i_robot-2.jpg" alt="Mountains" style="width:100%"/>
+                </div>
+            </div>
+             <br/>
+            <h1>Available Movies at <h:outputText value="#{zipBean.secondtname}"/>:</h1>
+            <div class="row">
+                <div class="column">
+                  <img src="https://ci3.googleusercontent.com/proxy/6IjxWrdez0EZ-mnyiprZYrLWGtOP9yqa_BShZ7q-9Xm4k0Bg-bVJ01q2tc4L_w-moXFWODb2aDg965v8IEz_YbcoP5oXv_Av9XcRx3QNzwoQTgOohqkPt_mwzND1d3I-_gG0ljfh9EGF475LNT4Jh2LoyKDuRxyoGkRMvyI3QUhpgppL-9CBEfLFiTb8Ic0qvbKRF6z1En0ogfD3Mf1PFgU2XQJwrPqAZ3KJXNvZnc7uDCUnDfVYXExVwCrK8GmGYGmPQIzNsx_LLSDhXCnMNanflYpNxk4M_6LXdarJr0ATRpYhlJ302JUqjHebizuQz-5AdltBWrLeqt8S0gCAsRA6JHCNw_uR3zke_mkl8UVyx18FGu4v54SYZVbs3MudAVq06tqra3h6IIsRDVzbw9P0858tr9A0QsKu7xG0FSkObNrGnFyJYAdVznRdE8PjxzoLz4SEvftOn7MJQCP5nr6uNxmqFAByGaiwAyUs4f3H6BMTwdVdHpqomR7ZgbBsIX_NeT1qY36lyuOrUkap-lcT75eG4ZfE72mRR4032yA1XBiXzK2W5Wio9gh_s9OilBJrpCmN6zNoE4sKqCd4_C6E1bX8ZVgwbyLXE1W8aw72S6VWSPxmvgrOuqnyq0Evdx0rUTRTtW8cPtL92wxijxmhfz6Jyr91GKSXdqc_AlcVGMMf5iaHM1NArMPs4Wkmc5wfGgrGfy6ti36yRGrHQp0bKT3pt71q5PclmolRqyNHSLDnIM-vOgxRbXtTVm05PRNg_Ffo=s0-d-e1-ft#https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/97e4becb-d3b7-4732-8039-af5e062af33c/d80mer7-61ac8790-7574-4078-9738-929c5ca5db09.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk3ZTRiZWNiLWQzYjctNDczMi04MDM5LWFmNWUwNjJhZjMzY1wvZDgwbWVyNy02MWFjODc5MC03NTc0LTQwNzgtOTczOC05MjljNWNhNWRiMDkuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0._oSMUYUqbfgGfBjTLlWrMaVtaRpseeg-n41Rwj6mScI" alt="Mountains" style="width:100%"/>
+                </div>
+                <div class="column">
+                  <img src="https://ci4.googleusercontent.com/proxy/KI9Ny97nt7IXFieQyKLEsexgTCRSc6bVX4bdrMwmujFmOX1XYbSH1GYQpWpGNGawbTQR8suB3IBaZ7bl2NWQlBnFaWWD1_T5HJ7rwNcmA38OYA=s0-d-e1-ft#https://m.media-amazon.com/images/I/71YwxjfhEiL._AC_SL1303_.jpg" alt="Mountains" style="width:100%"/>
+                </div>
+                <div class="column">
+                  <img src="https://ci3.googleusercontent.com/proxy/MgJ6jReyy_FfsH_v-YEMOCI8Y0WZqEV9w8Ot1f7v8vHNZEK5xvXPYrqJGKpxIX4GbFXEzCtjMoKID_P_UqwBpDA7PMWomrQrH05RPsBisr2Pl-1r7PQdFEte6Er-btb1Wlmzhiq40W8RauwJ97PBOg=s0-d-e1-ft#https://m.media-amazon.com/images/M/MV5BMjM3MjQ1MzkxNl5BMl5BanBnXkFtZTgwODk1ODgyMjI@._V1_.jpg" alt="Mountains" style="width:100%"/>
+                </div>
+                <div class="column">
+                  <img src="https://ci5.googleusercontent.com/proxy/0wvwwaVB2y8cO6NDWaHQvhNan5jr8rA_JJxUSIZXwETbBz5z4qgnfQzsL0MM5gLR1wbn6lvTo3V_HhmunpQqRHVXGm2nfLHPI20nhoMOmVJt=s0-d-e1-ft#https://m.media-amazon.com/images/I/61QCViCqysL._AC_SY679_.jpg" alt="Mountains" style="width:100%"/>
+                </div>
+                <div class="column">
+                  <img src="https://ci6.googleusercontent.com/proxy/cpKXM1RwLBuXBA1aLga_VvMXqKVx9cVgiozAlnCZawezpbT4Ri5mcnoOn3j7KjtR3Fl0rfJVvcQ3DyRXvZNMN6cT_PixK1MKj7uvii4i0ZSCmMiUOjsjM46aJ0rddJJ-inCdREOed4JhGnGC_pz1Eg=s0-d-e1-ft#https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_.jpg" alt="Mountains" style="width:100%"/>
+                </div>
+            </div>
+        </section>    
+    </h:body>
+    <footer>
+        
+    </footer>
+    
+</html>
+
